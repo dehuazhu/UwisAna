@@ -84,7 +84,6 @@ def readData(data_file):
     input_file.Close()
 
 def makePlot_TH2F(ttree, x_var, y_var, n_x, x_min, x_max, n_y, y_min, y_max):
-
     plot_name   = 'x:%s; y:%s'%(x_var,y_var)
     can         = ROOT.TCanvas(plot_name,plot_name)
     hist        = ROOT.TH2F('h','', n_x, x_min, x_max, n_y, y_min, y_max)
@@ -93,15 +92,13 @@ def makePlot_TH2F(ttree, x_var, y_var, n_x, x_min, x_max, n_y, y_min, y_max):
     ttree.Draw('%s:%s >> hist'%(y_var,x_var))
     hist.Draw('colz')
     set_trace()
-    
-
 
 if __name__ == '__main__':
     data_file = '/home/dehuazhu/playground/UwisAna/data.csv'
     readData(data_file)
 
-
     pf.setpfstyle()
+
     input_tree_file = ROOT.TFile('data.root')
     input_tree = input_tree_file.Get('tree')
     # makePlot(ttree, x_var, y_var, x_min, x_max, y_min, y_max)
